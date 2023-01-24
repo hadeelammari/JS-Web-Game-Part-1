@@ -1,3 +1,4 @@
+//Your code is a copy of the provided solution and hence is not accepted
 function newImage(url, left, bottom){
     let object = document.createElement('img')
     object.src = url
