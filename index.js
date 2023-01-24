@@ -1,3 +1,7 @@
+//part 3 of the activity request refactoring the code to use the newImage function to create the images 
+//so the code to create both the greenCharacter and the pine tree should have been replaced with a call to the newImage function
+
+//The following should have been replaced with newImage('assets/green-character.gif', 100, 100)
 let greenCharacter = document.createElement('img')
 greenCharacter.src = 'assets/green-character.gif'
 greenCharacter.style.position = 'fixed'
@@ -5,7 +9,7 @@ greenCharacter.style.left = '100px'
 greenCharacter.style.bottom = '100px'
 document.body.append(greenCharacter)
 
-
+//The following should have been replaced with newImage('assets/pine-tree.png', 450, 200)
 let PineTree = document.createElement ('img')
 PineTree.src = 'assets/pine-tree.png'
 PineTree.style.position = 'fixed'
@@ -22,6 +26,7 @@ function newImage (a,b,c){
     newImage.style.bottom = c
     document.body.append(newImage)
 
+    //There is no requirement for removing images, only items 
     newImage.addEventListener('dblclick', function()
     {
         newImage.remove()
@@ -35,6 +40,8 @@ newImage('assets/well.png', "500px", "425px")
 newImage('assets/sheild.png',"165px","185px")
 newImage('assets/staff.png', "600px", "100px")
 
+//Part 5 of the activity request creating a function newItem that will create new items and that includes a dblclick event listener.
+//There should be 3 items created using this function sword.png, shield.png, and staff.png
 let sword = document.createElement('img')
 sword.src = 'assets/sword.png'
 sword.style.position = 'fixed'
