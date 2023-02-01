@@ -21,9 +21,9 @@ image.style.bottom = bottom + 'px'
 document.body.append(image)
 return image
 }
-function newImage(position, gif, left, bottom){
+function newImage(position, gif, left, bottom){ //you aready hace a function for newImage, this function should be newItem
     
-    image.addEventlistener ('click', function(){
+    image.addEventlistener ('click', function(){ //this should be dbclick 
         image.remove()
     })
 }
