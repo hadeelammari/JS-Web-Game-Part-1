@@ -104,12 +104,15 @@ tile('assets/grass.png', 0, 0, window.innerWidth/100, heightOfGrass/100)
 // ... [rest of the code remains unchanged]
 
 // Place individual images on the page at specified positions.
+newImage('assets/well.png', 699, 425)
+newImage('assets/crate.png', 788, 444)
 newImage('assets/green-character.gif', 590, 100)
-newImage('assets/tree.png', 777, 250)
-newImage('assets/tree.png', 811, 200)
-newImage('assets/tree.png', 866, 150)
+newImage('assets/tree.png', 899, 350)
+newImage('assets/tree.png', 811, 299)
+newImage('assets/tree.png', 900, 255)
 newImage('assets/pillar.png', 700, 100)
-newImage('assets/pillar.png', 900, 100)
+newImage('assets/pillar.png', 1000, 100)
+newImage('assets/red-character.gif', 900, 165)
 newImage('assets/green-character1.gif', 845, 150)
 newItem('assets/staff.png', 813, 160)
 newImage('assets/pine-tree.png', 450, 460)
@@ -124,8 +127,7 @@ newImage('assets/pine-tree.png', 162, 377);
 newImage('assets/pine-tree.png', 145, 185);
 newImage('assets/pine-tree.png', 90, 50);
 
-newImage('assets/well.png', 699, 425)
-newImage('assets/crate.png', 788, 444)
+
 
 
 // Place the sword to the right of the green character.
