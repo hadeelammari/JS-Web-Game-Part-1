@@ -1,155 +1,153 @@
-// let greenCharacter = document.createElement('img')
-// greenCharacter.src = 'assets/green-character.gif'
-// greenCharacter.style.position = 'fixed'
-// greenCharacter.style.left = '100px'
-// greenCharacter.style.bottom = '100px'
-// document.body.append(greenCharacter)
 
-// let pineTree = document.createElement('img')
-// pineTree.src = 'assets/pine-tree.png'
-// pineTree.style.position = 'fixed'
-// pineTree.style.left = '100px'
-// pineTree.style.bottom = '100px'
-// document.body.append(pineTree)
 
-// 
-// I was stuck here for an embarrassingly long time, it turned out to be a capital "O" all along.
-
-// function newImage (url, leftlocation, bottomlocation) {
-//     let imageobject = document. createElement ('img')
-//     imageobject.src = url
-//     imageobject.style.position = 'fixed'
-//     imageobject.style.left = leftlocation
-//     imageobject.style.bottom = bottomlocation
-//     document. body. append (imageObject)
-// }
-
-//     newImage('assets/green-character.gif', '100px', '100px')
+// This function creates a new image and places it at a specified position.
+function newImage(url, left, bottom) {
+    // Create a new HTML image element.
+    let object = document.createElement('img');
     
-// function newImage(url, leftlocation, bottomlocation) {
-//     let imageObject = document.createElement('img'); 
-//     imageObject.src = url;
-//     imageObject.style.position = 'fixed';
-//     imageObject.style.left = leftlocation;
-//     imageObject.style.bottom = bottomlocation;
-//     document.body.append(imageObject); // Use the correctly cased variable name here
-// }
+    // Set the image source to the given URL.
+    object.src = url;
+    
+    // Style the image. It's positioned relative to the browser window.
+    object.style.position = 'fixed';
+    object.style.left = left + 'px'; // Horizontal position.
+    object.style.bottom = bottom + 'px'; // Vertical position.
+    
+    // Add the image to the document body.
+    document.body.append(object);
+    
+    // Return the created image object.
+    return object;
+}
 
-// newImage('assets/boulder.png', '32px', '487px');
-// newImage('assets/crate.png', '286px', '115px');
-// newImage('assets/grass.png', '166px', '310px');
-// newImage('assets/green-character.gif', '422px', '290px');
-// newImage('assets/log.png', '113px', '25px');
-// newImage('assets/pillar.png', '500px', '21px');
-// newImage('assets/pillar.png', '425px', '21px');
-// newImage('assets/pillar.png', '375px', '21px');
-// newImage('assets/pillar.png', '495px', '21px');
-// newImage('assets/pillar.png', '495px', '21px');
-// newImage('assets/pillar.png', '495px', '21px');
-// newImage('assets/pine-tree.png', '87px', '378px');
-// newImage('assets/red-character.gif', '256px', '172px');
-// newImage('assets/rock.png', '308px', '458px');
-// newImage('assets/shield.png', '417px', '226px');
-// newImage('assets/staff.png', '375px', '324px');
+// This function creates a new image that can be double-clicked to move it to a fixed location.
+function newItem(url, left, bottom) {
+    let object = newImage(url, left, bottom);
+    
+    // Add an event listener for the double-click event on the image.
+    object.addEventListener('dblclick', () => {
+        // On double-click, move the image to the specified location.
+        object.style.left = '612px';
+        object.style.bottom = '100px';
+    });
+}
 
-// newImage('assets/tree.png', '64px', '252px');
-// newImage('assets/well.png', '481px', '33px');
-
-
-// let sword = document.createElement('img')
-// sword.src = 'assets/sword.png'
-// sword.position = 'fixed'
-// sword.left = '500px'
-// sword.bottom = '405px'
-// document.body.append(sword)
-
-// sword.addEventListener('click', function(){
-//     sword.remove()
-// })
-// Define the tile function that creates a grid of images.
-// The image at the given URL will be placed in a grid pattern with the specified width and height.
-function tile(url, left, bottom, width, height){
-    // Loop for the height of the grid.
-    for(let h = 0; h < height; h++){
-        // Nested loop for the width of the grid.
-        for(let w = 0; w < width; w++){
-            // Call the newImage function to place an image at the calculated position.
-            // Each image is positioned 100 pixels apart horizontally and vertically.
-            newImage(url, left + w*100, bottom+h*100)
+// This function creates a tiled pattern of images.
+function tile(url, left, bottom, width, height) {
+    for (let h = 0; h < height; h++) {
+        for (let w = 0; w < width; w++) {
+            // Create a new image for each tile position.
+            newImage(url, left + w * 100, bottom + h * 100);
         }
     }
 }
 
-// This function creates and places a new image on the page.
-function newImage(url, left, bottom){
-    // Create a new image element.
-    let object = document.createElement('img')
-    object.src = url  // Set the source of the image.
-    object.style.position = 'fixed'  // Set the image to a fixed position.
-    object.style.left = left + 'px'  // Set the horizontal position.
-    object.style.bottom = bottom + 'px'  // Set the vertical position.
-    document.body.append(object)  // Append the image to the body of the document.
-    return object  // Return the image element.
+// This function sets the character's image based on the direction it's facing.
+function setCharacterImage(direction) {
+    switch (direction) {
+        case 'west':
+            character.src = './assets/green-character/west.gif';
+            break;
+        case 'north':
+            character.src = './assets/green-character/north.gif';
+            break;
+        case 'east':
+            character.src = './assets/green-character/east.gif';
+            break;
+        case 'south':
+            character.src = './assets/green-character/south.gif';
+            break;
+        default:
+            character.src = './assets/green-character/static.gif';
+            break;
+    }
 }
 
-// Calculate the position of the horizon and the heights of the sky and grass sections.
-let horizon = window.innerHeight / 1.75
-let heightOfSky = window.innerHeight-horizon
-let heightOfGrass = horizon
+// Initialize some global variables.
+let direction = null;
+let character = newImage('assets/green-character.gif', 590, 100); // Create the main character.
+let x = 590; // Initial horizontal position.
+let y = 100; // Initial vertical position.
+let screenMaxX = window.innerWidth - character.width; // Maximum horizontal position.
+let screenMaxY = window.innerHeight - character.height; // Maximum vertical position.
 
-// Use the tile function to create a sky and grass background.
-tile('assets/sky.png', 0, horizon, window.innerWidth/100, heightOfSky/100)
-tile('assets/grass.png', 0, 0, window.innerWidth/100, heightOfGrass/100)
+// This function updates the character's position based on its current direction.
+function moveCharacter() {
+    let futureX = x;
+    let futureY = y;
+    
+    // Update position based on direction.
+    if (direction === 'west') futureX = x - 1;
+    if (direction === 'north') futureY = y + 1;
+    if (direction === 'east') futureX = x + 1;
+    if (direction === 'south') futureY = y - 1;
 
-// ... [rest of the code remains unchanged]
+    // Ensure character doesn't go out of screen bounds.
+    // if (futureX >= 0 && futureX <= screenMaxX) x = futureX;
+    // if (futureY >= 0 && futureY <= screenMaxY) y = futureY;
 
-// Place individual images on the page at specified positions.
-newImage('assets/well.png', 699, 425)
-newImage('assets/crate.png', 788, 444)
-newImage('assets/green-character.gif', 590, 100)
-newImage('assets/tree.png', 899, 350)
-newImage('assets/tree.png', 811, 299)
-newImage('assets/tree.png', 900, 255)
-newImage('assets/pillar.png', 700, 100)
-newImage('assets/pillar.png', 1000, 100)
-newImage('assets/red-character.gif', 900, 165)
-newImage('assets/green-character1.gif', 845, 150)
-newItem('assets/staff.png', 813, 160)
-newImage('assets/pine-tree.png', 450, 460)
-newImage('assets/pine-tree.png', 34, 433);
-newImage('assets/pine-tree.png', 176, 422);
-newImage('assets/pine-tree.png', 82, 322);
-newImage('assets/pine-tree.png', 155, 345);
-newImage('assets/pine-tree.png', 333, 366);
-newImage('assets/pine-tree.png', 200, 234);
-newImage('assets/pine-tree.png', 55, 166);
-newImage('assets/pine-tree.png', 162, 377);
-newImage('assets/pine-tree.png', 145, 185);
-newImage('assets/pine-tree.png', 90, 50);
+    let screenMaxX = window.innerWidth - character.offsetWidth;
+let screenMaxY = window.innerHeight - character.offsetHeight;
 
-
-
-
-// Place the sword to the right of the green character.
-newItem('assets/sword.png', 670, 100)  // Adjusted left position
-
-// Place the shield to the left of the green character.
-newItem('assets/shield.png', 500, 100)  // Adjusted left position
-
-
-
-
-// 
-
-// This function creates a new interactive item on the page.
-function newItem(url, left, bottom){
-    // Create and place a new image using the newImage function.
-    let object = newImage(url, left, bottom)
-    // Add an event listener to the image.
-    // When the image is double-clicked, its position is changed to (670, 100).
-    object.addEventListener('dblclick', () => {
-        object.style.left = '612px';
-        object.style.bottom = '100px';
-    })
+if (futureX >= 0 && futureX <= screenMaxX) {
+    x = futureX;
 }
 
+// so close, but he still walks off the bottom of the page
+// if (futureY >= 0 && futureY <= screenMaxY) {
+//     y = futureY;
+// }
+
+// I tried this but it WebGLContextEvent;t move up or down at all now
+// if (futureY >= 0 && futureY + character.offsetHeight <= window.innerHeight)
+
+
+if (futureY >= 0 && futureY <= window.innerHeight - character.offsetHeight) y = futureY;
+
+
+    // Update the character's visual position and z-index.
+    character.style.left = x + 'px';
+    character.style.bottom = y + 'px';
+    character.style.zIndex = y; // zIndex ensures objects "behind" the character appear correctly.
+}
+
+// Event listeners for arrow key presses.
+document.addEventListener('keydown', (event) => {
+    // Set the direction based on arrow key pressed.
+    if (event.key === 'ArrowLeft') {
+        direction = 'west';
+        setCharacterImage(direction);
+    }
+    if (event.key === 'ArrowUp') {
+        direction = 'north';
+        setCharacterImage(direction);
+    }
+    if (event.key === 'ArrowRight') {
+        direction = 'east';
+        setCharacterImage(direction);
+    }
+    if (event.key === 'ArrowDown') {
+        direction = 'south';
+        setCharacterImage(direction);
+    }
+});
+
+// Reset direction when arrow key is released.
+document.addEventListener('keyup', () => {
+    direction = null;
+    setCharacterImage();
+});
+
+// Define the visual world.
+let horizon = window.innerHeight / 1.75;
+let heightOfSky = window.innerHeight - horizon;
+let heightOfGrass = horizon;
+
+// Create tiled images for the sky and grass.
+tile('assets/sky.png', 0, horizon, window.innerWidth / 100, heightOfSky / 100);
+tile('assets/grass.png', 0, 0, window.innerWidth / 100, heightOfGrass / 100);
+
+// [Place other objects using the newImage or newItem function]
+
+// The main game loop. Updates character's position every 1 millisecond.
+setInterval(moveCharacter, 1);
