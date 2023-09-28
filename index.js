@@ -1,36 +1,36 @@
 
 
-// This function creates a new image and places it at a specified position.
-function newImage(url, left, bottom) {
-    // Create a new HTML image element.
-    let object = document.createElement('img');
+// // This function creates a new image and places it at a specified position.
+// function newImage(url, left, bottom) {
+//     // Create a new HTML image element.
+//     let object = document.createElement('img');
     
-    // Set the image source to the given URL.
-    object.src = url;
+//     // Set the image source to the given URL.
+//     object.src = url;
     
-    // Style the image. It's positioned relative to the browser window.
-    object.style.position = 'fixed';
-    object.style.left = left + 'px'; // Horizontal position.
-    object.style.bottom = bottom + 'px'; // Vertical position.
+//     // Style the image. It's positioned relative to the browser window.
+//     object.style.position = 'fixed';
+//     object.style.left = left + 'px'; // Horizontal position.
+//     object.style.bottom = bottom + 'px'; // Vertical position.
     
-    // Add the image to the document body.
-    document.body.append(object);
+//     // Add the image to the document body.
+//     document.body.append(object);
     
-    // Return the created image object.
-    return object;
-}
+//     // Return the created image object.
+//     return object;
+// }
 
-// This function creates a new image that can be double-clicked to move it to a fixed location.
-function newItem(url, left, bottom) {
-    let object = newImage(url, left, bottom);
+// // This function creates a new image that can be double-clicked to move it to a fixed location.
+// function newItem(url, left, bottom) {
+//     let object = newImage(url, left, bottom);
     
-    // Add an event listener for the double-click event on the image.
-    object.addEventListener('dblclick', () => {
-        // On double-click, move the image to the specified location.
-        object.style.left = '612px';
-        object.style.bottom = '100px';
-    });
-}
+//     // Add an event listener for the double-click event on the image.
+//     object.addEventListener('dblclick', () => {
+//         // On double-click, move the image to the specified location.
+//         object.style.left = '612px';
+//         object.style.bottom = '100px';
+//     });
+// }
 
 
 
