@@ -57,9 +57,9 @@ function setCharacterImage(direction) {
 
 // Initialize some global variables.
 let direction = null;
-let character = newImage('assets/green-character.gif', 460, 0); // Create the main character.
-let x = 590; // Initial horizontal position.
-let y = 100; // Initial vertical position.
+let character = newImage('assets/green-character.gif', 0, 460); // Create the main character.
+let x = 0; // Initial horizontal position.
+let y = 460; // Initial vertical position.
 let screenMaxX = window.innerWidth - character.width; // Maximum horizontal position.
 let screenMaxY = window.innerHeight - character.height; // Maximum vertical position.
 
