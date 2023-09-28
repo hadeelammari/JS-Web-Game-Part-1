@@ -4,7 +4,7 @@
 function moveCharacter() {
     let futureX = x;
     let futureY = y;
-    
+
     // Update position based on direction.
     if (direction === 'west') futureX = x - 1;
     if (direction === 'north') futureY = y + 1;
@@ -16,16 +16,16 @@ function moveCharacter() {
     // if (futureY >= 0 && futureY <= screenMaxY) y = futureY;
 
     let screenMaxX = window.innerWidth - character.offsetWidth;
-let screenMaxY = window.innerHeight - character.offsetHeight;
+    let screenMaxY = window.innerHeight - character.offsetHeight;
 
-if (futureX >= 0 && futureX <= screenMaxX) {
-    x = futureX;
-}
+    if (futureX >= 0 && futureX <= screenMaxX) {
+        x = futureX;
+    }
 
-// so close, but he still walks off the bottom of the page
+    // so close, but he still walks off the bottom of the page
 
 
-if (futureY >= 0 && futureY <= window.innerHeight - character.offsetHeight) y = futureY;
+    if (futureY >= 0 && futureY <= window.innerHeight - character.offsetHeight) y = futureY;
 
 
     // Update the character's visual position and z-index.
