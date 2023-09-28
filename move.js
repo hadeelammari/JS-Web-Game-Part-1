@@ -1,15 +1,4 @@
-// function move(element) {
-//     element.style.position = 'fixed'
 
-//     function moveToCoordinates(left, bottom) {
-//         element.style.left = left + 'px'
-//         element.style.bottom = bottom + 'px'
-//     }
-
-//     return {
-//         to: moveToCoordinates
-//     }
-// }
 
 // This function updates the character's position based on its current direction.
 function moveCharacter() {
@@ -34,12 +23,6 @@ if (futureX >= 0 && futureX <= screenMaxX) {
 }
 
 // so close, but he still walks off the bottom of the page
-// if (futureY >= 0 && futureY <= screenMaxY) {
-//     y = futureY;
-// }
-
-// I tried this but it WebGLContextEvent;t move up or down at all now
-// if (futureY >= 0 && futureY + character.offsetHeight <= window.innerHeight)
 
 
 if (futureY >= 0 && futureY <= window.innerHeight - character.offsetHeight) y = futureY;
