@@ -60,3 +60,5 @@ document.addEventListener('keyup', () => {
     direction = null;
     setCharacterImage();
 });
+// The main game loop. Updates character's position every 1 millisecond.
+setInterval(moveCharacter, 1);

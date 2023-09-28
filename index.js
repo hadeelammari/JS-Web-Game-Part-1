@@ -65,16 +65,3 @@ let screenMaxY = window.innerHeight - character.height; // Maximum vertical posi
 
 
 
-// // Define the visual world.
-// let horizon = window.innerHeight / 1.75;
-// let heightOfSky = window.innerHeight - horizon;
-// let heightOfGrass = horizon;
-
-// // Create tiled images for the sky and grass.
-// tile('assets/sky.png', 0, horizon, window.innerWidth / 100, heightOfSky / 100);
-// tile('assets/grass.png', 0, 0, window.innerWidth / 100, heightOfGrass / 100);
-
-// [Place other objects using the newImage or newItem function]
-
-// The main game loop. Updates character's position every 1 millisecond.
-setInterval(moveCharacter, 1);
